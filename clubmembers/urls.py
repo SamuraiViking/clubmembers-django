@@ -19,11 +19,10 @@ from rest_framework import routers
 from clubmembers import views
 
 router = routers.DefaultRouter()
-router.register(r'posts',views.PostView,'clubmembers')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('api/', include(router.urls)),
-    path('clubmembers/', views.club_members_list),
-    path('clubmembers/<int:pk>/', views.club_member_detail)
+    path('api/', include(router.urls)),
+    path('api/clubmembers/', views.ClubMemberList.as_view()),
+    path('api/clubmembers/<int:pk>/', views.ClubMemberDetail.as_view())
 ]
