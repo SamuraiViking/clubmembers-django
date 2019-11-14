@@ -6,3 +6,9 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+class ClubMember(models.Model):
+    email=models.EmailField(max_length=254)
+
+    def __str__(self):
+        return self.email
