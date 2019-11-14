@@ -9,6 +9,8 @@ class Post(models.Model):
 
 class ClubMember(models.Model):
     email=models.EmailField(max_length=254)
+    display_name=models.CharField(max_length=120, default="")
+    photo=models.URLField(max_length=200, default="")
 
     def __str__(self):
         return self.email

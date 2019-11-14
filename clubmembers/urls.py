@@ -20,9 +20,10 @@ from clubmembers import views
 
 router = routers.DefaultRouter()
 router.register(r'posts',views.PostView,'clubmembers')
-router.register(r'clubmembers',views.ClubMemberView,'clubmembers')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls))
+    # path('api/', include(router.urls)),
+    path('clubmembers/', views.club_members_list),
+    path('clubmembers/<int:pk>/', views.club_member_detail)
 ]
