@@ -19,6 +19,7 @@ from rest_framework import routers
 from clubmembers import views
 
 router = routers.DefaultRouter()
+router.register(r'posts',views.PostView,'clubmembers')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

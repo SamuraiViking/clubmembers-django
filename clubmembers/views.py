@@ -5,6 +5,10 @@ from .models import Post, ClubMember
 from rest_framework import mixins
 from rest_framework import generics
 
+from .getStudentDataWithEmail import getStudentDataWithEmail
+
+from django.http import HttpResponse
+
 class PostView(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     queryset = Post.objects.all()
@@ -12,8 +16,8 @@ class PostView(viewsets.ModelViewSet):
 
 
 class ClubMemberList(mixins.ListModelMixin,
-                  mixins.CreateModelMixin,
-                  generics.GenericAPIView):
+                     mixins.CreateModelMixin,
+                     generics.GenericAPIView):
 
     queryset = ClubMember.objects.all()
     serializer_class = ClubMemberSerializer
@@ -22,26 +26,19 @@ class ClubMemberList(mixins.ListModelMixin,
         return self.list(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
+
         request.POST._mutable = True
-        request.POST['email'] = 'nelson67@stolaf.edu'
-        request.POST['display_name'] = 'Kevin Nelson'
-        request.POST['photo'] = 'https://stackoverflow.com/questions/18930234/django-modifying-the-request-object'
-        print(request.POST)
+
+        email = request.POST['email']
+
+        student_data = getStudentDataWithEmail(email)
+
+        request.POST['display_name'] = student_data['display_name']
+        request.POST['photo'] = student_data['photo']
+
         return self.create(request, *args, **kwargs)
 
-class ClubMemberDetail(mixins.RetrieveModelMixin,
-                       mixins.UpdateModelMixin,
-                       mixins.DestroyModelMixin,
-                       generics.GenericAPIView):
+class ClubMemberDetail(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = ClubMember.objects.all()
     serializer_class = ClubMemberSerializer
-
-    def get(self, request, *args, **kwargs):
-        return self.retrieve(request, *args, **kwargs)
-
-    def put(self, request, *args, **kwargs):
-        return self.update(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        return self.destroy(request, *args, **kwargs)
