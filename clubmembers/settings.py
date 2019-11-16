@@ -59,7 +59,6 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
-    "https://arcane-springs-16917.herokuapp.com/",
 ] 
 
 CORS_ALLOW_METHODS = [
