@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "arcane-springs-16917.herokuapp.com",
+    "clubmembers.surge.sh",
+    'localhost',
 ]
 
 
