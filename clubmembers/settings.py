@@ -25,7 +25,9 @@ SECRET_KEY = 'e@q78$1-gcz9(2f(90e8rz&qxh+(*7@1in-lej+x62v)@m$v$_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "https://arcane-springs-16917.herokuapp.com/",
+]
 
 
 # Application definition
@@ -57,8 +59,8 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
-    "https://clubmembers.surge.sh/",
-]
+    "https://arcane-springs-16917.herokuapp.com/",
+] 
 
 CORS_ALLOW_METHODS = [
     'DELETE',
