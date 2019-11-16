@@ -26,7 +26,7 @@ SECRET_KEY = 'e@q78$1-gcz9(2f(90e8rz&qxh+(*7@1in-lej+x62v)@m$v$_'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "arcane-springs-16917.herokuapp.com",
+    "olegroups.herokuapp.com",
     "clubmembers.surge.sh",
     'localhost',
 ]
