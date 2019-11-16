@@ -25,14 +25,23 @@ class ClubMemberList(mixins.ListModelMixin,
 
     def post(self, request, *args, **kwargs):
 
-        request.POST._mutable = True
+        print(request.data)
 
-        email = request.POST['email']
+        # student_email = request.POST['email']
+        # student_data = getStudentDataWithEmail(student_email)
 
-        student_data = getStudentDataWithEmail(email)
 
-        request.POST['display_name'] = student_data['display_name']
-        request.POST['photo'] = student_data['photo']
+        # request.POST['display_name'] = student_data['display_name']
+        # request.POST['photo'] = student_data['photo']
+
+        # request.POST._mutable = True
+        # request.POST = request.POST.copy()
+
+        # request.POST['email'] = 'nelson67@stolaf.edu'
+        # request.POST['display_name'] = "Kevin Nelson"
+        # request.POST['photo'] = "https://www.stolaf.edu/stofaces/face.cfm?username=nelson67&v=E3B0C44&fullsize"
+
+        # print(request.POST)
 
         return self.create(request, *args, **kwargs)
 
