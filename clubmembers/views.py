@@ -7,8 +7,6 @@ from rest_framework import generics
 
 from .getStudentDataWithEmail import getStudentDataWithEmail
 
-from django.http import HttpResponse
-
 class PostView(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     queryset = Post.objects.all()
